@@ -1,5 +1,5 @@
 from ultralytics import YOLO
 
-model = YOLO('yolov8x')
+model = YOLO('models/params/last.pt')
 
-result = model.predict('input_videos/image.png', save=True)
+result = model.predict('input_videos/input_video.mp4', save=True)
