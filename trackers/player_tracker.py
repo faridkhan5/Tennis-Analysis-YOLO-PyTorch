@@ -77,9 +77,9 @@ class PlayerTracker:
             for tracking_id, bbox_coords in player_dict.items():
                 x1, y1, x2, y2 = bbox_coords
                 # text
-                cv2.putText(frame, f"Player ID: {tracking_id}", (int(x1), int(y1)), cv2.FONT_HERSHEY_COMPLEX, 0.9, (0,0,255), 2)
+                cv2.putText(frame, f"Player ID: {tracking_id}", (int(x1), int(y1)-10), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255,0,0), 2)
                 # bbox
-                cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0,0,255), 2)
+                cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (255,0,0), 2)
             output_video_frames.append(frame)
         
         return output_video_frames 
