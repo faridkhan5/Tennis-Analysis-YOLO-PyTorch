@@ -1,5 +1,5 @@
 env
-models/params
+models
 yolov8x.pt
 training/data
 training/keypoints_model.pth
