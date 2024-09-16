@@ -28,7 +28,10 @@ class BallTracker:
 
 
     def detect_frame(self, frame):
-        """return: {id: [ball bbox coords]}"""
+        """ detects a ball class object and finds out its bbox coords
+        Returns:
+            dict: {id: [bbox coords]}
+        """
         result = self.model.predict(frame, conf=0.15)[0]
         
         ball_dict = {}
@@ -39,7 +42,7 @@ class BallTracker:
         return ball_dict
 
     def draw_bboxes(self, video_frames, ball_detections):
-        """draw bbox around the ball in the video"""
+        '''draws a bbox around the ball'''
         output_video_frames = []
         for frame, ball_dict in zip(video_frames, ball_detections):
             # draw bboxes
