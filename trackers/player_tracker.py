@@ -28,7 +28,10 @@ class PlayerTracker:
 
 
     def detect_frame(self, frame):
-        """return: {tracking_id of players: bbox coords}"""
+        """ tracks each person class object using a unique tracking id and finds out their respective bbox coords
+        Returns:
+            dict: {tracking_id of people: bbox coords}
+        """
         results = self.model.track(frame, persist=True)[0]
         id_name_dict = results.names  # {id1: obj1, ..., id2: obj2}
         
@@ -70,7 +73,7 @@ class PlayerTracker:
         return player_dict
 
     def draw_bboxes(self, video_frames, player_detections):
-        """draw bbox around the players in the video"""
+        '''draws bbox around all person class objects in the video'''
         output_video_frames = []
         for frame, player_dict in zip(video_frames, player_detections):
             # draw bboxes
