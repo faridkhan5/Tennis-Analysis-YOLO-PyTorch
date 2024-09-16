@@ -30,7 +30,7 @@ class PlayerTracker:
     def detect_frame(self, frame):
         """ tracks each person class object using a unique tracking id and finds out their respective bbox coords
         Returns:
-            dict: {tracking_id of people: bbox coords}
+            dict: {tracking_id of people: [bbox coords]}
         """
         results = self.model.track(frame, persist=True)[0]
         id_name_dict = results.names  # {id1: obj1, ..., id2: obj2}
