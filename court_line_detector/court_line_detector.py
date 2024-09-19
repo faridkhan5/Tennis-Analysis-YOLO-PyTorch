@@ -5,7 +5,7 @@ import cv2
 
 class CourtLineDetector:
     def __init__(self, model_path):
-        self.model = models.resnet50(weights=False)
+        self.model = models.resnet50(weights=None)
         # modify fc layer
         self.model.fc = torch.nn.Linear(self.model.fc.in_features, 14*2)
         # load saved wts
