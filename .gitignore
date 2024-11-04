@@ -3,3 +3,4 @@ models
 yolov8x.pt
 training/data
 training/keypoints_model.pth
+dummy.py

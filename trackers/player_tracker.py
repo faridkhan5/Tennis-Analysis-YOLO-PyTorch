@@ -1,11 +1,47 @@
 from ultralytics import YOLO
 import cv2
 import pickle
-
+from utils import get_center_of_bbox, euclidean_distance
 
 class PlayerTracker:
     def __init__(self, model_path):
         self.model = YOLO(model_path)
+
+    def choose_and_filter_players(self, court_keypoints, player_detections):
+        """filters the 2 tennis players
+        Returns:
+            list: [{tracking_id_1: bbox_coords},
+                    {tracking_id_2: bbox_coords}]
+        """
+        player_detections_first_frame = player_detections[0]
+        chosen_two_players = self.choose_players(court_keypoints, player_detections_first_frame)
+        filtered_player_detections = []
+        for player_dict in player_detections:
+            # filter only the 2 tennis players in each frame
+            filtered_player_dict = {tracking_id: bbox_coords for tracking_id, bbox_coords in player_dict.items() if tracking_id in chosen_two_players}
+            filtered_player_detections.append(filtered_player_dict)
+        return filtered_player_detections
+    
+    def choose_players(self, court_keypoints, player_dict):
+        """finds the 2 tennis players among all people in the frame
+        Returns:
+            list: tracking_ids of the 2 nearest people to the court
+        """
+        distances = []
+        for tracking_id, bbox_coords in player_dict.items():
+            player_center = get_center_of_bbox(bbox_coords)
+            min_dist = float('inf')
+            for i in range(0, len(court_keypoints), 2):
+                court_keypoint = (court_keypoints[i], court_keypoints[i+1])
+                curr_dist = euclidean_distance(player_center, court_keypoint)
+                if curr_dist <= min_dist:
+                    # shortest distance for a player to a court_keypoint among all other court_keypoints
+                    min_dist = curr_dist
+            distances.append((tracking_id, min_dist))
+        distances.sort(key=lambda x: x[1])
+        # choose top 2 shortest distances
+        chosen_players = [distances[0][0], distances[1][0]]
+        return chosen_players
 
     def detect_frames(self, frames, read_from_stub=False, stub_path=None):
         player_detections = []
@@ -25,7 +61,6 @@ class PlayerTracker:
                 pickle.dump(player_detections, f)
 
         return player_detections
-
 
     def detect_frame(self, frame):
         """ tracks each person class object using a unique tracking id and finds out their respective bbox coords
@@ -86,5 +121,4 @@ class PlayerTracker:
                 cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (255,0,0), 2)
             output_video_frames.append(frame)
         
-        return output_video_frames 
-
+        return output_video_frames
