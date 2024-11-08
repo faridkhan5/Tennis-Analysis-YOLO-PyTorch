@@ -31,13 +31,15 @@ class PlayerTracker:
         for tracking_id, bbox_coords in player_dict.items():
             player_center = get_center_of_bbox(bbox_coords)
             min_dist = float('inf')
+            cumulative_dist = 0
             for i in range(0, len(court_keypoints), 2):
                 court_keypoint = (court_keypoints[i], court_keypoints[i+1])
                 curr_dist = euclidean_distance(player_center, court_keypoint)
-                if curr_dist <= min_dist:
+                cumulative_dist += curr_dist
+                #if curr_dist <= min_dist:
                     # shortest distance for a player to a court_keypoint among all other court_keypoints
-                    min_dist = curr_dist
-            distances.append((tracking_id, min_dist))
+                #   min_dist = curr_dist
+            distances.append((tracking_id, cumulative_dist))
         distances.sort(key=lambda x: x[1])
         # choose top 2 shortest distances
         chosen_players = [distances[0][0], distances[1][0]]
@@ -51,8 +53,10 @@ class PlayerTracker:
             with open(stub_path, 'rb') as f:
                 player_detections = pickle.load(f)
             return player_detections
-            
+        
+        print('frame detections len: ', len(frames))
         for frame in frames:
+
             player_dict = self.detect_frame(frame)
             player_detections.append(player_dict)
 
@@ -60,6 +64,7 @@ class PlayerTracker:
             with open(stub_path, 'wb') as f:
                 pickle.dump(player_detections, f)
 
+        print('player detections len: ', len(player_detections))
         return player_detections
 
     def detect_frame(self, frame):
