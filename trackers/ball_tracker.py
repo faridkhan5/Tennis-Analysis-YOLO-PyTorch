@@ -2,7 +2,6 @@ from ultralytics import YOLO
 import cv2
 import pickle
 import pandas as pd
-from pykalman import KalmanFilter
 
 class BallTracker:
     def __init__(self, model_path):
