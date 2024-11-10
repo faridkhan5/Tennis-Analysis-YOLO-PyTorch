@@ -35,7 +35,7 @@ def main():
     ball_detections = ball_tracker.interpolate_ball_positions(ball_detections)
     print('-'*30)
     print('Ball detections done')
-
+    
     # court line detector model
     court_model_path = "models/keypoints_model_30.pth"
     court_line_detector = CourtLineDetector(court_model_path)
@@ -150,7 +150,7 @@ def main():
         cv2.putText(frame, f"Frame: {i+1}", (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
 
     # save video
-    save_video(output_video_frames, "output_videos/djokovic_vs_sonego_dist.avi")
+    save_video(output_video_frames, "output_videos/output_video_1.avi")
     print('-'*30)
     print('Video saved successfully')
     print('-'*30)

@@ -241,9 +241,10 @@ class MiniCourt:
                 ]
             )
         """
+        player_ids = list(player_bboxes[0].keys())
         player_heights = {
-            1: constants.PLAYER_1_HEIGHT,
-            2: constants.PLAYER_2_HEIGHT
+            player_ids[0]: constants.PLAYER_1_HEIGHT,
+            player_ids[1]: constants.PLAYER_2_HEIGHT
         }
 
         output_player_bboxes = []

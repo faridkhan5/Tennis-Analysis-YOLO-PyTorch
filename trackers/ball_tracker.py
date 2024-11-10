@@ -2,6 +2,7 @@ from ultralytics import YOLO
 import cv2
 import pickle
 import pandas as pd
+from pykalman import KalmanFilter
 
 class BallTracker:
     def __init__(self, model_path):
@@ -16,12 +17,13 @@ class BallTracker:
 
         # convert list to pandas df to interpolate the missing vals
         df_ball_positions = pd.DataFrame(ball_positions, columns=['x1', 'y1', 'x2', 'y2'])
-
+        
         # interpolate missing vals
-        df_ball_positions = df_ball_positions.interpolate()
+        df_ball_positions = df_ball_positions.interpolate(method='polynomial', order=3)
+        
         # since default direction is forward, we need to fill the 1st row
         df_ball_positions = df_ball_positions.bfill()
-
+        
         ball_positions = [{1:x} for x in df_ball_positions.to_numpy().tolist()]
         
         return ball_positions
