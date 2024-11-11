@@ -13,7 +13,7 @@ This project implements a real-time analysis of tennis match videos, tracking pl
   - Calculated shot speed and player speed based on direction changes of the ball
 
 ## Tech Stack
-* YOLOv5: Real-time object detection
-* Roboflow: Enhanced YOLO model for robust ball tracking
-* ResNet: Custom-trained for tennis court keypoints detection
-* OpenCV: Visualizations and mini-court overlay drawing
+* **YOLOv5:** Real-time object detection
+* **Roboflow:** Enhanced YOLO model for robust ball tracking
+* **ResNet:** Custom-trained for tennis court keypoints detection
+* **OpenCV:** Visualizations and mini-court overlay drawing
