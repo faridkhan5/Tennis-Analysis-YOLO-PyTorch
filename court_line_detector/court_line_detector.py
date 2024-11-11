@@ -77,7 +77,7 @@ class CourtLineDetector:
                 y = int(keypoints[i+1])
 
                 # draw dot on the coords
-                cv2.putText(image, str(i//2), (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
+                # cv2.putText(image, str(i//2), (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
                 cv2.circle(image, (x,y), 5, (0,0,255), -1)  # -1 -> filled circle
         return image
     

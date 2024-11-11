@@ -150,7 +150,7 @@ def main():
         cv2.putText(frame, f"Frame: {i+1}", (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
 
     # save video
-    save_video(output_video_frames, "output_videos/output_video_1.avi")
+    save_video(output_video_frames, "output_videos/output_video.avi")
     print('-'*30)
     print('Video saved successfully')
     print('-'*30)
