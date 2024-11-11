@@ -6,8 +6,8 @@ This project implements a real-time analysis of tennis match videos, tracking pl
 
 ## Methodology
 * **Object Detection:** Detect players and the ball in each frame using YOLOv5
-* **Improved Ball Detection:** Integrated a pre-trained YOLO model from Roboflow to enhance ball detection in difficult frames
-* **Court Keypoints Prediction:** Trained a ResNet model on tennis court images and used it to predict court keypoints
+* **Improved Ball Detection:** Fine-tuned a pre-trained YOLOv5 model from Roboflow to enhance ball detection in difficult frames
+* **Court Keypoints Prediction:** Trained a ResNet50 model on tennis court images to predict court keypoints
 * **Mini-Court Visualization and Stats Calculation:**
   - Converted bounding box coordinates to mini-court coordinates
   - Calculated shot speed and player speed based on direction changes of the ball
