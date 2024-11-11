@@ -35,7 +35,7 @@ def draw_player_stats(output_video_frames, player_stats):
         output_video_frames[idx] = frame
 
         # add text to overlay rectangle
-        text = "    Player 1  Player 2"
+        text = "    Player 1    Player 2"
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
                                                text,
                                                (start_x+90, start_y+30),
@@ -50,7 +50,8 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x+10, start_y+80), 
                                                cv2.FONT_HERSHEY_SIMPLEX, 
                                                0.45, 
-                                               (255,255,255))
+                                               (0,255,255),
+                                               2)
         player_1_text = f"{player_1_shot_speed:.1f} km/h"
         player_2_text = f"{player_2_shot_speed:.1f} km/h"
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
@@ -58,13 +59,15 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x + 130, start_y + 80),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (0, 255, 255),
+                                               2)
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
                                                player_2_text,
-                                               (start_x + 130 + 100, start_y + 80),
+                                               (start_x + 130 + 120, start_y + 80),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (0, 255, 255),
+                                               2)
         
         
 
@@ -74,7 +77,8 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x+10, start_y+120),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255,255,255))
+                                               (255,255,255),
+                                               2)
         player_1_text = f"{player_1_speed:.1f} km/h"
         player_2_text = f"{player_2_speed:.1f} km/h"
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
@@ -82,17 +86,19 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x + 130, start_y + 120),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (255, 255, 255),
+                                               2)
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
                                                player_2_text,
-                                               (start_x + 130 + 100, start_y + 120),
+                                               (start_x + 130 + 120, start_y + 120),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (255, 255, 255),
+                                               2)
 
 
         text = "Avg Sh Speed:"
-        output_video_frames[idx] = cv2.putText(output_video_frames[idx], text, (start_x+10, start_y+160), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255,255,255))
+        output_video_frames[idx] = cv2.putText(output_video_frames[idx], text, (start_x+10, start_y+160), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0,255,255), 2)
         player_1_text = f"{player_1_avg_shot_speed:.1f} km/h"
         player_2_text = f"{player_2_avg_shot_speed:.1f} km/h"
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
@@ -100,16 +106,18 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x + 130, start_y + 160),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (0, 255, 255),
+                                               2)
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
                                                player_2_text,
-                                               (start_x + 130 + 100, start_y + 160),
+                                               (start_x + 130 + 120, start_y + 160),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (0, 255, 255),
+                                               2)
        
         text = "Avg Pl Speed:"
-        output_video_frames[idx] = cv2.putText(output_video_frames[idx], text, (start_x+10, start_y+200), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255,255,255))
+        output_video_frames[idx] = cv2.putText(output_video_frames[idx], text, (start_x+10, start_y+200), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 2)
         player_1_text = f"{player_1_avg_speed:.1f} km/h"
         player_2_text = f"{player_2_avg_speed:.1f} km/h"
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
@@ -117,12 +125,14 @@ def draw_player_stats(output_video_frames, player_stats):
                                                (start_x + 130, start_y + 200),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (255, 255, 255),
+                                               2)
         output_video_frames[idx] = cv2.putText(output_video_frames[idx],
                                                player_2_text,
-                                               (start_x + 130 + 100, start_y + 200),
+                                               (start_x + 130 + 120, start_y + 200),
                                                cv2.FONT_HERSHEY_SIMPLEX,
                                                0.45,
-                                               (255, 255, 255))
+                                               (255, 255, 255),
+                                               2)
     
     return output_video_frames
