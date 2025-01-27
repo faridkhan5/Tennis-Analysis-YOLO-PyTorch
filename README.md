@@ -1,8 +1,9 @@
 # Tennis-Analysis-YOLO-PyTorch
-![Output video frame image](output_videos/output_img_2.png)
 
 ## About
 This project implements a real-time analysis of tennis match videos, tracking players and ball movements using YOLOv5. The system detects player positions and the ball, maps them to a mini-court overlay, and computes key statistics such as shot speed and player speed.
+
+![Output video frame image](output_videos/output_img_2.png)
 
 ## Methodology
 * **Object Detection:** Detect players and the ball in each frame using YOLOv5
